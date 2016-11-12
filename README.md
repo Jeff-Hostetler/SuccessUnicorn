@@ -12,7 +12,7 @@ group :test, :development do
   gem "success_unicorn"
 end
 ```
-
+### In your rails_heler
 In your rails_helper file, add Success Unicorn as a dependency and to your configuration.
 
 ```
@@ -30,3 +30,16 @@ RSpec.configure do |config|
 end
 ```
 
+### Rake support
+
+If you are running your suite through rake, you can capture the bash exit object and pass that along
+to SuccessUnicorn.
+
+```
+Rake::Task["spec"].clear
+desc "Run specs"
+task :spec do |_, args|
+  system "bundle exec rspec"
+  SuccessUnicorn::MessageGenerator.generate_for_exit_status($?.exitstatus)
+end
+```

@@ -1,8 +1,19 @@
 module SuccessUnicorn
   class MessageGenerator
     class << self
+
       def generate(examples)
-        examples.none?(&:exception) ? success : error
+        unless examples.all? {|example| example.respond_to?(:exception)}
+          return error("One or more passed in objects does not respond to exception.")
+        end
+        examples.none?(&:exception) ? success : failure
+      end
+
+      def generate_for_exit_status(exit_object)
+        unless exit_object.respond_to?(:exitstatus)
+          return error("The passed in object does not respond to exitstatus.")
+        end
+        exit_object.exitstatus == 0 ? success : failure
       end
 
 
@@ -12,8 +23,12 @@ module SuccessUnicorn
         call_printer(message: success_text)
       end
 
-      def error
-        call_printer(message: error_text, failure: true)
+      def failure
+        call_printer(message: failure_text, failure: true)
+      end
+
+      def error(msg)
+        call_printer(message: msg, failure: true)
       end
 
       def call_printer(message:, failure: false)
@@ -52,7 +67,7 @@ module SuccessUnicorn
 END
       end
 
-      def error_text
+      def failure_text
         <<END
                     _-.                       .-_
                  _..-'(                       )`-.._
