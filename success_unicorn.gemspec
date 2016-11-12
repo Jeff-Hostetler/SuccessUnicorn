@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = "success-unicorn"
-  s.version     = "0.0.2"
-  s.date        = "2016-11-11"
+  s.version     = "0.0.3"
+  s.date        = "2016-11-12"
   s.summary     = "RSpec ASCII success and failure thingy"
   s.description = "RSpec ASCII success and failure thingy"
   s.authors     = ["Jeff Hostetler"]
