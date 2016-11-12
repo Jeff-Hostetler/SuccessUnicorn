@@ -13,7 +13,7 @@ end
 ```
 
 In your rails_helper file, add Success Unicorn as a dependency and to your configuration.
-See on RubyGems https://rubygems.org/gems/SuccessUnicorn. 
+See on RubyGems https://rubygems.org/gems/SuccessUnicorn.
 
 ```
 require "success_unicorn"
