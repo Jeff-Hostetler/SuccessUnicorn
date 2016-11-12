@@ -1,6 +1,5 @@
 require "rspec"
-require_relative "../lib/success_unicorn/message_generator"
-require_relative "../lib/success_unicorn/printer"
+require_relative "../lib/success_unicorn.rb"
 
 describe SuccessUnicorn::MessageGenerator do
   before do
