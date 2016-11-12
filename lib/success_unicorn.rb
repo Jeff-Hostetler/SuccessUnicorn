@@ -9,11 +9,8 @@ module SuccessUnicorn
         examples.none?(&:exception) ? success : failure
       end
 
-      def generate_for_exit_status(exit_object)
-        unless exit_object.respond_to?(:exitstatus)
-          return error("The passed in object does not respond to exitstatus.")
-        end
-        exit_object.exitstatus == 0 ? success : failure
+      def generate_for_exit_status(exit_status)
+        exit_status == 0 ? success : failure
       end
 
 

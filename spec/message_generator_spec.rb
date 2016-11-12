@@ -34,24 +34,17 @@ describe SuccessUnicorn::MessageGenerator do
 
   describe ".generate_for_exit_status" do
     specify "when the exitstatus is 0 it calls the printer with success text" do
-      exit_object = double("Bash exit object", exitstatus: 0)
-      @logger.generate_for_exit_status(exit_object)
+      exit_status = 0
+      @logger.generate_for_exit_status(exit_status)
 
       expect(@printer).to have_received(:print).with(message: @logger.send(:success_text), failure: false)
     end
 
     specify "when the exitstatus is not 0 it calls the printer with failure text" do
-      exit_object = double("Bash exit object", exitstatus: "something other than 0")
-      @logger.generate_for_exit_status(exit_object)
+      exit_status = "not zero"
+      @logger.generate_for_exit_status(exit_status)
 
       expect(@printer).to have_received(:print).with(message: @logger.send(:failure_text), failure: true)
-    end
-
-    specify "when the passed in parameter does not respond to exit status it calls printer to log error" do
-      exit_object = double("Bash exit object")
-      @logger.generate_for_exit_status(exit_object)
-
-      expect(@printer).to have_received(:print).with(message: "The passed in object does not respond to exitstatus.", failure: true)
     end
   end
 end
