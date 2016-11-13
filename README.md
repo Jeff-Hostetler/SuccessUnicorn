@@ -3,7 +3,7 @@
 ## Why use me?
 When your test pass a friggin unicorn prints in your terminal/IDE. If they fail, a spooky
 bat will scare you to encourage you to go green.
-See on RubyGems https://rubygems.org/gems/SuccessUnicorn.
+See on RubyGems https://rubygems.org/gems/success-unicorn.
 
 ## How to use me?
 Add to your gemfile in development
