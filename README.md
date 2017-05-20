@@ -12,7 +12,7 @@ group :test, :development do
   gem "success_unicorn"
 end
 ```
-### In your rails_heler
+### In your rails_helper
 In your rails_helper file, add Success Unicorn as a dependency and to your configuration.
 
 ```
